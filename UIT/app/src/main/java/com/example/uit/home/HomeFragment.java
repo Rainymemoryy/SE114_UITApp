@@ -80,11 +80,8 @@ public class HomeFragment extends Fragment {
 
 
     private List<MonHoc> getListMonHoc() {
-        List<MonHoc> listMonHoc = new ArrayList<>();
-        listMonHoc.add(new MonHoc("SS003.L11", "7-8", "C308", "Huynh ho mong trinh", "Phap Luat Dai Cuong", "07\n30"));
-        listMonHoc.add(new MonHoc("SS003.L11", "7-8", "C308", "Huynh ho mong trinh", "Phap Luat Dai Cuong", "07\n30"));
 
-        return listMonHoc;
+return null;
     }
 
     private List<MonThi> getListMonThi() {

@@ -2,27 +2,32 @@ package com.example.uit.lichhoc;
 
 public class MonHoc {
 
-    private  String maMonHoc;
-    private  String tietHoc;
-    private String phongHoc;
-    private  String tenGiangVien;
-    private  String tenMonHoc;
-    private  String thoiGianBatDau;
+    String tenMonHoc, maLop, thoiGianBatDau, thoiGianKetThu, hinhThuc, hocThu, phongHoc, tenGiangVien, thongTin;
 
 
 
+    public String getThongTin() {
+        return thongTin;
+    }
 
-    public MonHoc(String maMonHoc, String tietHoc, String phongHoc, String tenGiangVien, String tenMonHoc, String thoiGianBatDau) {
-        this.maMonHoc = maMonHoc;
-        this.tietHoc = tietHoc;
-        this.phongHoc = phongHoc;
-        this.tenGiangVien = tenGiangVien;
-        this.tenMonHoc = tenMonHoc;
-        this.thoiGianBatDau = thoiGianBatDau;
+    public void setThongTin(String thongTin) {
+        this.thongTin = thongTin;
     }
 
     public String getTenMonHoc() {
         return tenMonHoc;
+    }
+
+    public void setTenMonHoc(String tenMonHoc) {
+        this.tenMonHoc = tenMonHoc;
+    }
+
+    public String getMaLop() {
+        return maLop;
+    }
+
+    public void setMaLop(String maLop) {
+        this.maLop = maLop;
     }
 
     public String getThoiGianBatDau() {
@@ -33,24 +38,28 @@ public class MonHoc {
         this.thoiGianBatDau = thoiGianBatDau;
     }
 
-    public void setTenMonHoc(String tenMonHoc) {
-        this.tenMonHoc = tenMonHoc;
+    public String getThoiGianKetThu() {
+        return thoiGianKetThu;
     }
 
-    public String getMaMonHoc() {
-        return maMonHoc;
+    public void setThoiGianKetThu(String thoiGianKetThu) {
+        this.thoiGianKetThu = thoiGianKetThu;
     }
 
-    public void setMaMonHoc(String maMonHoc) {
-        this.maMonHoc = maMonHoc;
+    public String getHinhThuc() {
+        return hinhThuc;
     }
 
-    public String getTietHoc() {
-        return tietHoc;
+    public void setHinhThuc(String hinhThuc) {
+        this.hinhThuc = hinhThuc;
     }
 
-    public void setTietHoc(String tietHoc) {
-        this.tietHoc = tietHoc;
+    public String getHocThu() {
+        return hocThu;
+    }
+
+    public void setHocThu(String hocThu) {
+        this.hocThu = hocThu;
     }
 
     public String getPhongHoc() {

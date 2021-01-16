@@ -1,105 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="3dp"
     android:layout_marginBottom="3dp"
-    android:orientation="vertical"
     android:background="@drawable/bg_home_hienthingay"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_margin="1dp"
-            android:background="#304ffe">
-
-            <TextView
-                android:id="@+id/tv_thoiGianBatDauMonHoc"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/koliko_light"
-                android:text="07\n30"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_tenMonHoc"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="Chuyên đề cơ sở dữ liệu nâng cao"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_thongTin"
-
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SE332.L11"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_tenGiangVien"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nguyen duc khang"
-                android:textAlignment="center"
-                android:textSize="30sp" />
-
-        </LinearLayout>
-    </LinearLayout>
+    android:orientation="vertical">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/clock_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="7h30" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="9h30"
-                app:layout_constraintStart_toEndOf="@+id/textView8" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_monhoc_thoigian"
+            android:layout_width="120dp"
 
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/akrobat_light"
 
+            android:text="09h30 - 11h30"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/tv_monhoc_maLop"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/akrobat_light"
+            android:text="SS005.L11"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_monhoc_thoigian"
+            app:layout_constraintTop_toTopOf="@+id/tv_monhoc_thoigian" />
+
+        <TextView
+            android:id="@+id/tv_monhoc_phonghoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/akrobat_light"
+            android:text="A.102"
+            android:textSize="14dp"
+
+            app:layout_constraintEnd_toEndOf="@+id/tv_monhoc_maLop"
+            app:layout_constraintStart_toStartOf="@+id/tv_monhoc_maLop"
+            app:layout_constraintTop_toBottomOf="@+id/tv_monhoc_maLop" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

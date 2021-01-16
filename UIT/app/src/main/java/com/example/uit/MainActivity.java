@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import com.example.uit.diem.BangDiem;
 import com.example.uit.diem.DiemThi;
+import com.example.uit.lichhoc.MonHoc;
 import com.example.uit.lichhoc.NgayHoc;
 import com.example.uit.lichthi.MonThi;
 import com.example.uit.lichthi.NgayThi;
@@ -491,27 +492,21 @@ public class MainActivity extends AppCompatActivity {
                         .ignoreContentType(true)
                         .execute();
                 String data = res.body();
-
-
                 JSONParser parser = new JSONParser();
-
-
                 Object obj = parser.parse(data);
-
                 JSONArray json = (JSONArray) obj;
-
                 JSONObject jsonObject = (JSONObject) json.get(1);
-
                 String lichthi = jsonObject.get("data").toString();
-
-
                 Document document = Jsoup.parse(lichthi);
 
-                Elements elements = document.select("tr > td");
-                Log.e("size: ", elements.size() + "");
-                for (Element e : elements)
-                    Log.e("data: ", e.text());
 
+                Elements elements = document.select("tr > td");
+
+
+                Data.listMonHoc = new ArrayList<>();
+                for(int i=0;i<elements.size();i+=8){
+
+                }
 
                 return null;
             } catch (IOException | org.json.simple.parser.ParseException e) {

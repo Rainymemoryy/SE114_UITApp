@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/clock_1"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +27,13 @@
 
         <TextView
             android:id="@+id/tv_monthi_thoigian"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ailerons_typeface"
-            android:layout_margin="10dp"
+            android:fontFamily="@font/akrobat_light"
+
             android:text="07h30"
 
-            android:textSize="30sp"
+            android:textSize="24sp"
 
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -46,9 +46,9 @@
             android:layout_height="wrap_content"
 
 
-            android:fontFamily="@font/ailerons_typeface"
+            android:fontFamily="@font/akrobat_light"
             android:text="SS0003.L16"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
 
 
@@ -61,10 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:fontFamily="@font/ailerons_typeface"
+            android:fontFamily="@font/akrobat_light"
             android:text="C3.18"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
 
 
             app:layout_constraintEnd_toEndOf="@+id/tv_monthi_mamonthi"

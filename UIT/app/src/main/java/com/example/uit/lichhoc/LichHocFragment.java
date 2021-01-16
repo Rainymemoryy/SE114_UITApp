@@ -1,6 +1,7 @@
 package com.example.uit.lichhoc;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,7 @@ public class LichHocFragment extends Fragment {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -64,20 +67,7 @@ public class LichHocFragment extends Fragment {
 
     private List<NgayHoc> getListNgayHoc() {
 
-        List<NgayHoc> listNgayHoc=new ArrayList<>();
 
-        List<MonHoc> listmonhoc1=  new ArrayList<>();
-        listmonhoc1.add(new MonHoc("SS001.L11", "7-10", "C.314(GD.A2)", "Huyen ho mong trinh", "Lap trinh game", "07\n30"));
-        listmonhoc1.add(new MonHoc("SS001", "7-10", "C.314", "Huyen ho mong trinh", "Lap trinh game", "07\n30"));
-
-        listNgayHoc.add(new NgayHoc("21 n12", listmonhoc1));
-        listNgayHoc.add(new NgayHoc("21 n12", listmonhoc1));
-        listNgayHoc.add(new NgayHoc("21 12", listmonhoc1));
-
-        List<MonHoc> listmonhoc2=  new ArrayList<>();
-        listmonhoc2.add(new MonHoc("SS001", "7-10", "C.314", "Huyen ho mong trinh", "Lap trinh game", "07\n30"));
-
-        listNgayHoc.add(new NgayHoc("12 04", listmonhoc2));
-        return listNgayHoc;
+        return null;
     }
 }
