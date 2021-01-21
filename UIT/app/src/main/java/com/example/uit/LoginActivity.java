@@ -222,7 +222,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 //Toast.makeText(MainActivity.this, "Chào mừng, " + ten.split("-")[0], Toast.LENGTH_SHORT).show();
                 Bundle bundlecookie = new Bundle();
                 bundlecookie.putSerializable("Cookies", (Serializable) ck); // Send cookie to other activity
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LoadDataActivity.class);
                 intent.putExtras(bundlecookie);
                 startActivity(intent);
                 finish();

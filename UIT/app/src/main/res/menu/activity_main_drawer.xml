@@ -6,20 +6,29 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/menu_home" />
 
         <item
             android:id="@+id/nav_lichthi"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_calendar_today_24"
             android:title="Lịch thi" />
         <item
             android:id="@+id/nav_lichhoc"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_today_24"
             android:title="Lịch học" />
         <item
+            android:id="@+id/nav_deadline"
+            android:icon="@drawable/ic_baseline_domain_verification_24"
+            android:title="Deadline" />
+        <item
             android:id="@+id/nav_ketquahoctap"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_score_24"
             android:title="Kết quả học tập" />
+        <item
+            android:id="@+id/nav_sinhvien"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="User" />
     </group>
+
 </menu>

@@ -21,6 +21,7 @@
     </style>
 
     <style name="Theme.UIT.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="Theme.UIT.AppBarOverlayLight" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.UIT.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

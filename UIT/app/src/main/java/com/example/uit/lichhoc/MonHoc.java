@@ -4,7 +4,17 @@ public class MonHoc {
 
     String tenMonHoc, maLop, thoiGianBatDau, thoiGianKetThu, hinhThuc, hocThu, phongHoc, tenGiangVien, thongTin;
 
-
+    public MonHoc(String tenMonHoc, String maLop, String thoiGianBatDau, String thoiGianKetThu, String hinhThuc, String hocThu, String phongHoc, String tenGiangVien, String thongTin) {
+        this.tenMonHoc = tenMonHoc;
+        this.maLop = maLop;
+        this.thoiGianBatDau = thoiGianBatDau;
+        this.thoiGianKetThu = thoiGianKetThu;
+        this.hinhThuc = hinhThuc;
+        this.hocThu = hocThu;
+        this.phongHoc = phongHoc;
+        this.tenGiangVien = tenGiangVien;
+        this.thongTin = thongTin;
+    }
 
     public String getThongTin() {
         return thongTin;

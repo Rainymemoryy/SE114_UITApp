@@ -1,5 +1,6 @@
 package com.example.uit.lichhoc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NgayHoc {
@@ -25,5 +26,10 @@ public class NgayHoc {
 
     public void setListMonHoc(List<MonHoc> listMonHoc) {
         this.listMonHoc = listMonHoc;
+    }
+
+    public void addMonHoc(MonHoc monHoc){
+        if(listMonHoc==null) listMonHoc=new ArrayList<>();
+        listMonHoc.add(monHoc);
     }
 }

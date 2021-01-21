@@ -10,8 +10,6 @@
         android:name="com.example.uit.home.HomeFragment"
         android:label=""
         tools:layout="@layout/fragment_home" />
-
-
     <fragment
         android:id="@+id/nav_lichthi"
         android:name="com.example.uit.lichthi.LichThiFragment"
@@ -29,4 +27,15 @@
         android:name="com.example.uit.diem.BangDiemFragment"
         android:label=""
         tools:layout="@layout/fragment_ketquahoctap" />
+
+    <fragment
+        android:id="@+id/nav_deadline"
+        android:name="com.example.uit.deadline.DeadlineFragment"
+        android:label=""
+        tools:layout="@layout/fragment_deadline" />
+    <fragment
+        android:id="@+id/nav_sinhvien"
+        android:name="com.example.uit.sinhvien.SinhVienFragment"
+        android:label=""
+        tools:layout="@layout/fragment_sinhvien" />
 </navigation>

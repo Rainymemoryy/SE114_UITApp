@@ -18,15 +18,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pnl_home_info"
             android:layout_width="match_parent"
-            android:layout_height="175dp"
+            android:layout_height="120dp"
 
 
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_1001" />
+                android:background="@drawable/bg_1001"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
 
             <TextView
 
@@ -38,7 +41,7 @@
 
                 android:text="Hello, "
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:layout_marginStart="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -46,13 +49,14 @@
             </TextView>
 
             <TextView
+                android:id="@+id/tv_home_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Khang"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tv_hello"
 
@@ -72,41 +76,38 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_hello"
-                app:layout_constraintTop_toBottomOf="@+id/tv_hello">
+                app:layout_constraintTop_toBottomOf="@+id/tv_hello"
+                android:visibility="gone"
+                >
+
 
             </TextView>
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_home_hienthingay"
+            <TextView
+
+                android:id="@+id/tv_home_today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:cardCornerRadius="20dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_home_thoigian"
+                android:fontFamily="sans-serif-light"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_goodMoring">
 
-                <TextView
+                android:text="Thu 3, 27/04/2021"
+                android:textColor="@color/black"
 
-                    android:id="@+id/tv_home_today"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:background="@color/white"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingStart="15dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="15dp"
-                    android:paddingBottom="10dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/tv_goodMoring" />
 
-                    android:text="Thu 3, 27/04/2021"
-                    android:textColor="@color/black"
-
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -186,6 +187,7 @@
                 <androidx.recyclerview.widget.RecyclerView
 
                     android:id="@+id/rcv_home_monThi"
+                    android:layout_marginTop="5dp"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

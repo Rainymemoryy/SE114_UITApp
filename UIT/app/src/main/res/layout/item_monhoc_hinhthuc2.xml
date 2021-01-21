@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_hienthingay"
+    android:padding="20dp"
+    android:layout_marginTop="5dp"
+    >
+
+    <TextView
+        android:id="@+id/tv_hinhthuc2_tenmonhoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhập môn ứng dụng di động"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_hinhthuc2_malop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SE114.L11.1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hinhthuc2_tenmonhoc"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_hinhthuc2_tengiangvien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phan Nguyệt Minh"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hinhthuc2_malop" />
+
+    <TextView
+        android:id="@+id/tv_hinhthuc2_thongtin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BĐ:21/09/20
+KT:02/01/21
+Tiết 4,5 ngày 2020-09-28, P. B1.08 Tiết 4,5 ngày 2020-10-12, P. B1.08 Tiết 4,5 ngày 2020-11-09, P. B1.08"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hinhthuc2_tengiangvien" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

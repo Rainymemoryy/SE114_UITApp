@@ -53,7 +53,7 @@ public class BangDiemFragment extends Fragment {
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
 //        rcvBangDiem.setLayoutManager(linearLayoutManager);
 
-        rcvBangDiem.setLayoutManager(new VegaLayoutManager());
+        rcvBangDiem.setLayoutManager(new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false));
 
         bangDiemAdapter.setData(getListBangDiem());
         rcvBangDiem.setAdapter(bangDiemAdapter);
@@ -66,7 +66,6 @@ public class BangDiemFragment extends Fragment {
 
 
         this.getActivity().findViewById(R.id.toolbar).setBackgroundColor(Color.parseColor("#f5f5f5"));
-
         this.getActivity().findViewById(R.id.appbar).setBackgroundColor(Color.parseColor("#f5f5f5"));
         this.getActivity().findViewById(R.id.appbar).setOutlineSpotShadowColor(Color.parseColor("#f5f5f5"));
 

@@ -3,10 +3,12 @@ package com.example.uit.home;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -23,7 +25,10 @@ import com.example.uit.lichthi.MonThiAdapter;
 import com.example.uit.lichthi.NgayThi;
 import com.example.uit.lichthi.NgayThiAdapter;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -35,9 +40,11 @@ public class HomeFragment extends Fragment {
     MonHocAdapter monHocAdapter;
     MonThiAdapter monThiAdapter;
 
+    TextView tvHienThiNgay, tvTen;
+
     private NgayThiAdapter ngayThiAdapter;
 
-    private HomeViewModel homeViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +54,21 @@ public class HomeFragment extends Fragment {
 
         rcvMonHoc = root.findViewById(R.id.rcv_home_monHoc);
         rcvMonThi = root.findViewById(R.id.rcv_home_monThi);
+        tvHienThiNgay = root.findViewById(R.id.tv_home_today);
+        tvTen = root.findViewById(R.id.tv_home_ten);
+
+
+        tvHienThiNgay.setText(Data.thoiGian);
+
+        if(Data.sinhVien!=null){
+            String []strs= Data.sinhVien.getHoTen().split("\\ ");
+            String str = strs[strs.length-1];
+            tvTen.setText(str);
+        }
+
+
+
+
 
         monHocAdapter = new MonHocAdapter();
         monThiAdapter = new MonThiAdapter();
@@ -74,40 +96,32 @@ public class HomeFragment extends Fragment {
         this.getActivity().findViewById(R.id.appbar).setOutlineSpotShadowColor(Color.parseColor("#90a4ae"));
 
 
+
+
+
         return root;
     }
 
 
-
     private List<MonHoc> getListMonHoc() {
 
-return null;
+//        List<MonHoc> listTmp=new ArrayList<>();
+//        for(MonHoc monHoc : Data.listMonHoc){
+//
+//
+//        }
+        return null;
     }
 
     private List<MonThi> getListMonThi() {
         List<MonThi> listMonThi = new ArrayList<>();
-        listMonThi.add(new MonThi("21\n30", "SS005", "Co so du lieu nang cao", "C308"));
-        listMonThi.add(new MonThi("21\n30", "SS005", "Lap trinh truc quan", "C308"));
-        listMonThi.add(new MonThi("12h", "SS001", "CO so diu lieu", "K201"));
-        listMonThi.add(new MonThi("12.1h", "BB001", "ADA", "K201"));
-        listMonThi.add(new MonThi("12h.22", "AA001", "123", "K201"));
-
-        return Data.listMonThi;
+        return Data.listLichThiHomNay;
     }
 
     private List<NgayThi> getListNgayThi() {
 
         List<NgayThi> listNgayThi = new ArrayList<>();
-
-        List<MonThi> listMonThi = new ArrayList<>();
-        listMonThi.add(new MonThi("12h", "SS001", "CO so diu lieu", "K201"));
-        listMonThi.add(new MonThi("12.1h", "BB001", "ADA", "K201"));
-        listMonThi.add(new MonThi("12h.22", "AA001", "123", "K201"));
-        NgayThi ngayThi1 = new NgayThi("21/12", listMonThi);
-
-
-        listNgayThi.add(ngayThi1);
-        listNgayThi.add(ngayThi1);
+        
         return listNgayThi;
     }
 
