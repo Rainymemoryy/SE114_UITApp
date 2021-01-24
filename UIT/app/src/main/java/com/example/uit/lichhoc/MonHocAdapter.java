@@ -39,6 +39,7 @@ public class MonHocAdapter extends RecyclerView.Adapter<MonHocAdapter.MonHocView
         holder.tvThoiGian.setText(monHoc.getThoiGianBatDau()+" - "+ monHoc.getThoiGianKetThu());
         holder.tvPhongHoc.setText(monHoc.getPhongHoc());
         holder.tvMaLop.setText(monHoc.getMaLop());
+        holder.tvTenMonHoc.setText(monHoc.getTenMonHoc());
     }
 
     @Override
@@ -49,14 +50,14 @@ public class MonHocAdapter extends RecyclerView.Adapter<MonHocAdapter.MonHocView
 
     public class MonHocViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvThoiGian, tvMaLop, tvPhongHoc;
+        TextView tvThoiGian, tvMaLop, tvPhongHoc, tvTenMonHoc;
 
         public MonHocViewHolder(@NonNull View itemView) {
             super(itemView);
             tvThoiGian = itemView.findViewById(R.id.tv_monhoc_thoigian);
             tvMaLop = itemView.findViewById(R.id.tv_monhoc_maLop);
             tvPhongHoc = itemView.findViewById(R.id.tv_monhoc_phonghoc);
-
+            tvTenMonHoc = itemView.findViewById(R.id.tv_monhoc_tenmonhoc);
         }
     }
 }

@@ -26,6 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/tv_monhoc_thoigian"
             android:layout_width="120dp"
 
@@ -41,7 +42,7 @@
         <TextView
             android:id="@+id/tv_monhoc_maLop"
             android:layout_width="wrap_content"
-
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:fontFamily="@font/akrobat_light"
             android:text="SS005.L11"
@@ -55,7 +56,7 @@
             android:id="@+id/tv_monhoc_phonghoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/black"
             android:fontFamily="@font/akrobat_light"
             android:text="A.102"
             android:textSize="14dp"
@@ -67,5 +68,17 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+<TextView
+    android:id="@+id/tv_monhoc_tenmonhoc"
+    android:layout_marginTop="0dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
+    android:text="Phuong phap phat trien phan mem huong doi tuong"
+    android:textSize="16dp"
+    android:textColor="@color/black"
+    />
 </LinearLayout>

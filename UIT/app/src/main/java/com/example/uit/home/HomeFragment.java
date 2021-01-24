@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -18,8 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uit.Data;
 import com.example.uit.R;
+import com.example.uit.deadline.Deadline;
+import com.example.uit.deadline.DeadlineAdapter;
 import com.example.uit.lichhoc.MonHoc;
 import com.example.uit.lichhoc.MonHocAdapter;
+import com.example.uit.lichhoc.NgayHoc;
 import com.example.uit.lichthi.MonThi;
 import com.example.uit.lichthi.MonThiAdapter;
 import com.example.uit.lichthi.NgayThi;
@@ -36,15 +41,15 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView rcvMonHoc;
     private RecyclerView rcvMonThi;
+    private RecyclerView rcvDeadline;
 
     MonHocAdapter monHocAdapter;
     MonThiAdapter monThiAdapter;
+    DeadlineAdapter deadlineAdapter;
 
     TextView tvHienThiNgay, tvTen;
 
-    private NgayThiAdapter ngayThiAdapter;
-
-
+    int ii = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,75 +59,125 @@ public class HomeFragment extends Fragment {
 
         rcvMonHoc = root.findViewById(R.id.rcv_home_monHoc);
         rcvMonThi = root.findViewById(R.id.rcv_home_monThi);
+        rcvDeadline = root.findViewById(R.id.rcv_home_deadline);
         tvHienThiNgay = root.findViewById(R.id.tv_home_today);
         tvTen = root.findViewById(R.id.tv_home_ten);
 
 
         tvHienThiNgay.setText(Data.thoiGian);
 
-        if(Data.sinhVien!=null){
-            String []strs= Data.sinhVien.getHoTen().split("\\ ");
-            String str = strs[strs.length-1];
+        if (Data.sinhVien != null) {
+            String[] strs = Data.sinhVien.getHoTen().split("\\ ");
+            String str = strs[strs.length - 1];
             tvTen.setText(str);
         }
 
+        //Load lichThi
+        if (true) {
+            monThiAdapter = new MonThiAdapter();
+            LinearLayoutManager linearLayoutManagerMonThi = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
+            rcvMonThi.setLayoutManager(linearLayoutManagerMonThi);
+            monThiAdapter.setData(getListMonThi());
+            rcvMonThi.setAdapter(monThiAdapter);
+
+            if (getListMonThi().size() <= 0) {
+                root.findViewById(R.id.pnl_lichthi).setVisibility(View.GONE);
+                ii++;
+            }
+        }
+
+        //LoadLichHoc
+        if (true) {
+            monHocAdapter = new MonHocAdapter();
+            LinearLayoutManager linearLayoutManagerMonHoc = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
+            rcvMonHoc.setLayoutManager(linearLayoutManagerMonHoc);
+
+            List<MonHoc> listMonHoc = new ArrayList<>();
+
+            String[] getDay = Data.thoiGian.split("\\,");
+            Log.e("day", getDay[0]);
+            switch (getDay[0]) {
+                case "Th 2":
+                    listMonHoc= getListMonHoc("Thứ 2");
+                    break;
+                case "Th 3":
+                    listMonHoc= getListMonHoc("Thứ 3");
+                    break;
+                case "Th 4":
+                    listMonHoc= getListMonHoc("Thứ 4");
+                    break;
+                case "Th 5":
+                    listMonHoc= getListMonHoc("Thứ 5");
+                    break;
+                case "Th 6":
+                    listMonHoc= getListMonHoc("Thứ 6");
+                    break;
+                case "Th 7":
+                    listMonHoc= getListMonHoc("Thứ 7");
+                    break;
+            }
+            monHocAdapter.setData(listMonHoc);
+            rcvMonHoc.setAdapter(monHocAdapter);
+
+            if (listMonHoc.size() <= 0) {
+                root.findViewById(R.id.pnl_lichhoc).setVisibility(View.GONE);
+                ii++;
+            }
+        }
+
+        //Deadline
+        if (true) {
+            deadlineAdapter = new DeadlineAdapter();
+            LinearLayoutManager linearLayoutManagerDeadline = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
+            rcvDeadline.setLayoutManager(linearLayoutManagerDeadline);
+            deadlineAdapter.setData(getListDeadline());
+            rcvDeadline.setAdapter(deadlineAdapter);
+
+            if (getListDeadline().size() <= 0) {
+                root.findViewById(R.id.pnl_deadline).setVisibility(View.GONE);
+                ii++;
+            }
+        }
 
 
+        if (ii >= 3) {
+            root.findViewById(R.id.tv_home_none).setVisibility(View.VISIBLE);
+        }
 
 
-        monHocAdapter = new MonHocAdapter();
-        monThiAdapter = new MonThiAdapter();
-
-        LinearLayoutManager linearLayoutManagerMonHoc = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
-        LinearLayoutManager linearLayoutManagerMonThi = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
-
-        rcvMonHoc.setLayoutManager(linearLayoutManagerMonHoc);
-        rcvMonThi.setLayoutManager(linearLayoutManagerMonThi);
-
-        monHocAdapter.setData(getListMonHoc());
-        monThiAdapter.setData(getListMonThi());
-
-        rcvMonHoc.setAdapter(monHocAdapter);
-        rcvMonThi.setAdapter(monThiAdapter);
-
-        this.getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        this.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        this.getActivity().getWindow().setStatusBarColor(Color.parseColor("#90a4ae"));
+        if (true) {
+            this.getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            this.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            this.getActivity().getWindow().setStatusBarColor(Color.parseColor("#90a4ae"));
 
 
-        this.getActivity().findViewById(R.id.toolbar).setBackgroundColor(Color.parseColor("#90a4ae"));
+            this.getActivity().findViewById(R.id.toolbar).setBackgroundColor(Color.parseColor("#90a4ae"));
 
-        this.getActivity().findViewById(R.id.appbar).setBackgroundColor(Color.parseColor("#90a4ae"));
-        this.getActivity().findViewById(R.id.appbar).setOutlineSpotShadowColor(Color.parseColor("#90a4ae"));
+            this.getActivity().findViewById(R.id.appbar).setBackgroundColor(Color.parseColor("#90a4ae"));
+            this.getActivity().findViewById(R.id.appbar).setOutlineSpotShadowColor(Color.parseColor("#90a4ae"));
 
-
-
-
+        }
 
         return root;
     }
 
 
-    private List<MonHoc> getListMonHoc() {
+    private List<MonHoc> getListMonHoc(String thuTrongTuan) {
 
-//        List<MonHoc> listTmp=new ArrayList<>();
-//        for(MonHoc monHoc : Data.listMonHoc){
-//
-//
-//        }
-        return null;
+        for (NgayHoc ngayHoc : Data.listNgayHocHT1)
+            if (ngayHoc.getNgayHoc().contains(thuTrongTuan))
+                return ngayHoc.getListMonHoc();
+        return new ArrayList<>();
     }
 
     private List<MonThi> getListMonThi() {
-        List<MonThi> listMonThi = new ArrayList<>();
         return Data.listLichThiHomNay;
     }
 
-    private List<NgayThi> getListNgayThi() {
+    private List<Deadline> getListDeadline() {
 
-        List<NgayThi> listNgayThi = new ArrayList<>();
-        
-        return listNgayThi;
+        return Data.listDeadline;
+
     }
 
 }

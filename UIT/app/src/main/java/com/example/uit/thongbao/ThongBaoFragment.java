@@ -37,8 +37,8 @@ public class ThongBaoFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.bottomsheet_thongbao, container, false);
 
-        Log.e("Thong bao: " , Data.listThongBao.size()+"");
 
+        root.findViewById(R.id.textView3).setVisibility(View.GONE);
 
         rcvThongBao = root.findViewById(R.id.rcv_thongbao);
         thongBaoAdapter = new ThongBaoAdapter();
@@ -47,9 +47,53 @@ public class ThongBaoFragment extends Fragment {
 
         rcvThongBao.setLayoutManager(linearLayoutManager);
 
-        thongBaoAdapter.setData(Data.listThongBao);
-        rcvThongBao.setAdapter(thongBaoAdapter);
 
+        List<ThongBao> listThongBao = new ArrayList<>();
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+
+        Log.e("dadasdasdsadsadsadsadsadsad", "dadasdsadasdassss");
+
+        thongBaoAdapter.setData(listThongBao);
+
+        rcvThongBao.setAdapter(thongBaoAdapter);
 
 
         Window window = this.getActivity().getWindow();
@@ -60,7 +104,50 @@ public class ThongBaoFragment extends Fragment {
         this.getActivity().getWindow().setStatusBarColor(Color.parseColor("#f5f5f5"));
 
 
-
         return root;
+    }
+
+    List<ThongBao> getListThongBao() {
+        List<ThongBao> listThongBao = new ArrayList<>();
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+
+        listThongBao.add(new ThongBao(
+                "Thông báo học bù Cơ sở dữ liệu phân tán (IS211.K21) ngày 06/06/2020",
+                "T2, 01/06/2020 - 09:29",
+                "Nguyễn Hồ Duy Tri",
+                "HTTT",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "Cơ sở dữ liệu phân tán (IS211)",
+                "B1.20",
+                "2",
+                "5",
+                "7 , ngày 06/06/2020"
+        ));
+        return listThongBao;
     }
 }

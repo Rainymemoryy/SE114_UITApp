@@ -30,7 +30,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/akrobat_light"
-
+            android:textColor="@color/black"
             android:text="07h30"
 
             android:textSize="24sp"
@@ -44,7 +44,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/black"
 
             android:fontFamily="@font/akrobat_light"
             android:text="SS0003.L16"
@@ -66,10 +66,22 @@
             android:textAlignment="center"
             android:textSize="14sp"
 
-
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/tv_monthi_mamonthi"
             app:layout_constraintStart_toStartOf="@+id/tv_monthi_mamonthi"
             app:layout_constraintTop_toBottomOf="@+id/tv_monthi_mamonthi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_monthi_tenmonthi"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+        android:text="Phuong phap phat trien phan mem huong doi tuong"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
 </LinearLayout>

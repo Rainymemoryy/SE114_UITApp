@@ -38,7 +38,7 @@ public class MonThiAdapter extends RecyclerView.Adapter<MonThiAdapter.MonThiView
 
         holder.maMonThi.setText(monThi.getMaLop());
         holder.phongThi.setText(monThi.getPhongThi());
-
+        holder.tenMonThi.setText(monThi.getTenMonThi());
         String tmp = "";
         switch (monThi.getCaThi()) {
             case "1":
@@ -69,6 +69,7 @@ public class MonThiAdapter extends RecyclerView.Adapter<MonThiAdapter.MonThiView
         private TextView maMonThi;
         private TextView thoiGianThi;
         private TextView phongThi;
+        private TextView tenMonThi;
 
         public MonThiViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +77,7 @@ public class MonThiAdapter extends RecyclerView.Adapter<MonThiAdapter.MonThiView
             maMonThi = itemView.findViewById(R.id.tv_monthi_mamonthi);
             thoiGianThi = itemView.findViewById(R.id.tv_monthi_thoigian);
             phongThi = itemView.findViewById(R.id.tv_monthi_phongthi);
+            tenMonThi = itemView.findViewById(R.id.tv_monthi_tenmonthi);
         }
     }
 }

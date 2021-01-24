@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.ParseException;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -16,13 +17,16 @@ import android.widget.Switch;
 import com.example.uit.deadline.Deadline;
 import com.example.uit.diem.BangDiem;
 import com.example.uit.diem.DiemThi;
+import com.example.uit.hocphi.HocPhi;
 import com.example.uit.lichhoc.MonHoc;
 import com.example.uit.lichhoc.NgayHoc;
 import com.example.uit.lichthi.MonThi;
 import com.example.uit.lichthi.NgayThi;
+import com.example.uit.noti.ThongBaoBroadcast;
 import com.example.uit.sinhvien.SinhVien;
 import com.example.uit.thongbao.ThongBao;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.jetbrains.annotations.NotNull;
@@ -41,9 +45,15 @@ import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 
 public class LoadDataActivity extends AppCompatActivity {
 
@@ -77,15 +87,12 @@ public class LoadDataActivity extends AppCompatActivity {
             cookies = (Map<String, String>) bundle.getSerializable("Cookies");
         }
 
-        ExamLoad examLoad = new ExamLoad();
-        examLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
         SinhVienLoad sinhVienLoad = new SinhVienLoad();
         sinhVienLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
         LinkImgLoad linkImgLoad = new LinkImgLoad();
         linkImgLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
 
         NotificationLoad notificationLoad = new NotificationLoad();
         notificationLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -99,10 +106,48 @@ public class LoadDataActivity extends AppCompatActivity {
         DeadlineLoad deadlineLoad = new DeadlineLoad();
         deadlineLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
+        HocPhiLoad hocPhiLoad = new HocPhiLoad();
+        hocPhiLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+        //createNotificationChannel();
+
+        //createNoti("khang", "mot hai ba bon", 2021, 0, 24, 14, 35, 10);
+        //createNoti("Lich thi", "SS007.L21, 09h30, B308", 2021, 0, 24, 15, 9, 10);
+    }
+
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "deadlineReminderChannel";
+            String description = "Channel for Deadline Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("deadlinenotify", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
+    private void createNoti(String title, String content, int year, int month, int day, int hour, int minute, int second) {
+
+
+        Intent intent = new Intent(LoadDataActivity.this, ThongBaoBroadcast.class);
+        intent.putExtra("title", title);
+        intent.putExtra("content", content);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(LoadDataActivity.this, 0, intent, 0);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(year, month, day, hour, minute, second);
+
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 
     public void SwitchMainActivity() {
-        if (nLoad == 7) {
+        if (nLoad == 8) {
             Intent intent = new Intent(LoadDataActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -153,14 +198,24 @@ public class LoadDataActivity extends AppCompatActivity {
 
 
                 for (int i = 0; i < elements.size(); i += 7) {
+                    String monThi = null;
+                    for (MonHoc monHoc : Data.listMonHocHT1) {
+                        if (monHoc.getMaLop().contains(elements.get(i + 2).text())) {
+                            monThi = monHoc.getTenMonHoc();
 
-                    Data.listMonThi.add(new MonThi(elements.get(i).text(),
+                        }
+
+                    }
+
+                    Data.listMonThi.add(new MonThi(
+                            elements.get(i).text(),
                             elements.get(i + 1).text(),
                             elements.get(i + 2).text(),
                             elements.get(i + 3).text(),
                             elements.get(i + 4).text(),
                             elements.get(i + 5).text(),
-                            elements.get(i + 6).text()
+                            elements.get(i + 6).text(),
+                            monThi
                     ));
                 }
 
@@ -300,8 +355,10 @@ public class LoadDataActivity extends AppCompatActivity {
 
         protected void onPostExecute(String link) {
             super.onPostExecute(link);
+
             DownloadImageTask downloadImageTask = new DownloadImageTask();
             downloadImageTask.execute(Link);
+            //downloadImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
     }
 
@@ -488,7 +545,7 @@ public class LoadDataActivity extends AppCompatActivity {
 
                 Elements elements = document.select("tr > td");
 
-                Data.listMonHoc = new ArrayList<>();
+                //Data.listMonHoc = new ArrayList<>();
                 Data.listMonHocHT1 = new ArrayList<>();
                 Data.listMonHocHT2 = new ArrayList<>();
 
@@ -685,6 +742,9 @@ public class LoadDataActivity extends AppCompatActivity {
 
             Log.e("Load", " da load xong lich hoc " + nLoad);
             SwitchMainActivity();
+
+            ExamLoad examLoad = new ExamLoad();
+            examLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
     }
 
@@ -696,6 +756,7 @@ public class LoadDataActivity extends AppCompatActivity {
         protected Bitmap doInBackground(String... urls) {
             String urldisplay = urls[0];
             url = urls[0];
+
             Bitmap mIcon11 = null;
             try {
                 InputStream in = new java.net.URL(urldisplay).openStream();
@@ -746,8 +807,8 @@ public class LoadDataActivity extends AppCompatActivity {
                 Map<String, String> cookie = tmp.cookies();
 
 
-                //String url2 = "https://courses.uit.edu.vn/calendar/view.php?view=upcoming";
-                String url2 =  "https://courses.uit.edu.vn/calendar/view.php?view=upcoming&time=1609434000";
+                String url2 = "https://courses.uit.edu.vn/calendar/view.php?view=upcoming";
+                //String url2 = "https://courses.uit.edu.vn/calendar/view.php?view=upcoming&time=1609434000";
                 Connection.Response res = Jsoup.connect(url2)
                         .cookies(cookie)
                         .execute();
@@ -793,6 +854,84 @@ public class LoadDataActivity extends AppCompatActivity {
             nLoad++;
             Log.e("load ", "da load xong deadline " + nLoad);
             SwitchMainActivity();
+        }
+    }
+
+    public class HocPhiLoad extends AsyncTask<Void, Void, String> {
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            nLoad++;
+
+            Log.e("Load", " da load xong hoc phi " + nLoad);
+            SwitchMainActivity();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+
+
+                String url = "https://daa.uit.edu.vn/tracuu/hocphi";
+                Connection.Response res2 = Jsoup.connect(url)
+                        .method(Connection.Method.GET)
+                        .cookies(cookies)
+                        .execute();
+
+                Document document = res2.parse();
+                Elements body = document.select(".container-inline.form-wrapper");
+                Log.e("hoc phi ", body.size() + "");
+
+                Data.listHocPhi = new ArrayList<>();
+                for (int i = 1; i < body.size(); i++) {
+                    Element e = body.get(i);
+
+                    String strHocKy = e.select(".fieldset-legend").get(0).text();
+                    strHocKy = strHocKy.replace("Thông tin học phí học kỳ", "HK").replace("năm học ", "NH ");
+                    ;
+
+                    Log.e("hocKy", strHocKy);
+
+                    Elements data = e.select("tbody > tr > td");
+                    String soTienPhaiDong = "", soTienDaDong = "", trangThai = "", trangThaiChiTiet = "";
+                    for (int j = 0; j + 2 < data.size(); j += 2) {
+
+                        if (data.get(j).text().contains("Số tiền phải đóng")) {
+                            soTienPhaiDong = data.get(j + 1).text();
+                            Log.e("soTienPhaiDong", soTienPhaiDong);
+                        }
+                        if (data.get(j).text().contains("Số tiền đã đóng")) {
+
+                            soTienDaDong = data.get(j + 1).text();
+                            Log.e("soTienDaDong", soTienDaDong);
+                        }
+                        if (data.get(j).text().contains("Còn thừa") || data.get(j).text().contains("Còn nợ")) {
+                            trangThai = data.get(j).text();
+                            Log.e("trangThai", trangThai);
+                            trangThaiChiTiet = data.get(j + 1).text();
+                            if (trangThaiChiTiet.contains("Thanh toán HP tại đây"))
+                                trangThaiChiTiet = trangThaiChiTiet.replace("Thanh toán HP tại đây", "");
+                            Log.e("trangThaiChiTiet", trangThaiChiTiet);
+                        }
+
+                    }
+
+                    Data.listHocPhi.add(new HocPhi(
+                            strHocKy,
+                            soTienPhaiDong,
+                            soTienDaDong,
+                            trangThai,
+                            trangThaiChiTiet
+                    ));
+
+
+                }
+
+                return "s";
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }

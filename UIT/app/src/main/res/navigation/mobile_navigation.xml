@@ -38,4 +38,9 @@
         android:name="com.example.uit.sinhvien.SinhVienFragment"
         android:label=""
         tools:layout="@layout/fragment_sinhvien" />
+    <fragment
+        android:id="@+id/nav_hocphi"
+        android:name="com.example.uit.hocphi.HocPhiFragment"
+        android:label=""
+        tools:layout="@layout/fragment_hocphi" />
 </navigation>

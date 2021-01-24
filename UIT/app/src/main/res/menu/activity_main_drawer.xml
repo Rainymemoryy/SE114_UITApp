@@ -26,6 +26,10 @@
             android:icon="@drawable/ic_baseline_score_24"
             android:title="Kết quả học tập" />
         <item
+            android:id="@+id/nav_hocphi"
+            android:icon="@drawable/ic_baseline_attach_money_24"
+            android:title="Học phí" />
+        <item
             android:id="@+id/nav_sinhvien"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="User" />

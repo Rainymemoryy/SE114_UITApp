@@ -19,6 +19,7 @@ public class ThongBaoAdapter extends RecyclerView.Adapter<ThongBaoAdapter.ThongB
 
     public void setData(List<ThongBao> listThongBao) {
         this.listThongBao = listThongBao;
+        notifyDataSetChanged();
     }
 
     @NonNull

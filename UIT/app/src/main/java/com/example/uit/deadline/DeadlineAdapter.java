@@ -1,6 +1,8 @@
 package com.example.uit.deadline;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ import java.util.Objects;
 public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.DeadlineViewHolder> {
 
     List<Deadline> listDeadline;
-    Context mContext=null;
+    Context mContext = null;
 
     public void setData(List<Deadline> listDeadline) {
         this.listDeadline = listDeadline;
@@ -53,13 +55,16 @@ public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.Deadli
         holder.btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, deadline.getUrl(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, deadline.getUrl(), Toast.LENGTH_SHORT).show();
 //                String url = deadline.getUrl();
 //                Uri uri = Uri.parse(url);
 //                Intent intent = new Intent();
 //                intent.setData(uri);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                context.startActivity(intent);
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deadline.getUrl()));
+                mContext.startActivity(browserIntent);
             }
         });
 
